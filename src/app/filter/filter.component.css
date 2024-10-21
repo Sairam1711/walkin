@@ -1,0 +1,28 @@
+.filter-container {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically on mobile */
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .filter-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Full width for mobile */
+    max-width: none; /* Remove max-width to allow full width */
+  }
+  
+  /* Responsive styles */
+  @media (min-width: 600px) {
+    .filter-container {
+      flex-direction: row; /* Row layout for larger screens */
+      justify-content: space-between;
+    }
+  
+    .filter-input {
+      max-width: 300px; /* Max width for larger screens */
+    }
+  }
+  

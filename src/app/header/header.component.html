@@ -1,0 +1,50 @@
+<header>
+    <div class="nav-container">
+      <div class="logo">
+        <h1>WalkIn</h1>
+      </div>
+      <div class="hamburger" ng-click="toggleMenu()">
+        &#9776; <!-- This is the hamburger icon -->
+      </div>
+      <!-- <nav>
+        <ul [ngClass]="{'show-menu': menuOpen}">
+          <li *ngFor="let list of menu"><a href="#" >{{list}}</a></li>
+         \
+        </ul>
+      </nav> -->
+      <div *ngIf="selectedCard" class="popup">
+        <div class="popup-content">
+          <span class="close" (click)="closePopup()">&times;</span>
+      
+          <!-- Input field for Title -->
+          <label for="title"><strong>Title:</strong></label>
+          <input id="title"  type="text" required [(ngModel)]="newData.title"  class="input-field" />
+      
+          <!-- Input field for Company Name -->
+          <label for="companyName"><strong>Company Name:</strong></label>
+          <input id="companyName" type="text" required [(ngModel)]="newData.title" class="input-field" />
+      
+          <!-- Input field for Mobile -->
+          <label for="mobile"><strong>Mobile:</strong></label>
+          <input id="mobile"  type="text" required [(ngModel)]="newData.title" class="input-field" />
+      
+          <!-- Input field for Contact Person -->
+          <label for="contactPerson"><strong>Contact Person:</strong></label>
+          <input id="contactPerson"  type="text" required [(ngModel)]="newData.title" class="input-field" />
+      
+          <!-- Input field for Job Role -->
+          <label for="jobRole"><strong>Job Role:</strong></label>
+          <input id="jobRole"  type="text" required [(ngModel)]="newData.title" class="input-field" />
+      
+          <!-- Input field for Description -->
+          <label for="description"><strong>Description:</strong></label>
+          <textarea id="description" required [(ngModel)]="newData.title"  class="input-field"></textarea>
+      
+          <!-- Submit button -->
+          <button  class="submit-button">Submit</button>
+        </div>
+      
+      </div>
+      <button class="modern-button" (click)="openPopup()">Add WalkIn</button>
+    </div>
+  </header>

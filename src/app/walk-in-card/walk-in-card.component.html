@@ -1,0 +1,34 @@
+<app-filter (filterChange)="onFilterChange($event)"></app-filter>
+<div class="card-container">
+    <div class="card" *ngFor="let card of cards">
+      <h2>{{ card.job_role }}</h2>
+      <p><strong>Company Name:</strong> {{ card.company_name }}</p>
+      <p><strong>Mobile:</strong> {{ card.mobile }}</p>
+      <p><strong>Contact Person:</strong> {{ card.contact_person }}</p>
+      <p><strong>Job Role:</strong> {{ card.job_role }}</p>
+      <div class="button-group">
+        <button (click)="copyLocation(card.mobile)">Copy Location</button>
+        <button (click)="openPopup(card)">See More</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Popup for additional description -->
+  <div *ngIf="selectedCard" class="popup">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h2>{{ selectedCard.title }}</h2>
+      <p><strong>Company Name:</strong> {{ selectedCard.companyName }}</p>
+      <p><strong>Mobile:</strong> {{ selectedCard.mobile }}</p>
+      <p><strong>Contact Person:</strong> {{ selectedCard.contactPerson }}</p>
+      <p><strong>Job Role:</strong> {{ selectedCard.jobRole }}</p>
+      <p>{{ selectedCard.description }}</p>
+    </div>
+  </div>
+  
+  <!-- Pagination controls -->
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  

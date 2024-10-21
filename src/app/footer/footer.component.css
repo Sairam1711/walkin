@@ -1,0 +1,69 @@
+/* footer.component.css */
+
+.footer {
+    background-color: #003366; /* Footer background color */
+    color: white; /* Footer text color */
+    padding: 20px; /* Padding for footer */
+    text-align: center; /* Centered text */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center the footer horizontally */
+  }
+  
+  /* Set maximum width based on device size */
+  @media (max-width: 600px) {
+    .footer {
+      max-width: 100%; /* Full width for small screens */
+    }
+  }
+  
+  @media (min-width: 601px) and (max-width: 768px) {
+    .footer {
+      max-width: 90%; /* 90% width for tablets */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .footer {
+      max-width: 97%; /* 1200px for larger screens */
+    }
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Add some spacing between items */
+  }
+  
+  .footer p {
+    margin: 0; /* Remove margin */
+  }
+  
+  .social-media {
+    display: flex;
+    justify-content: center; /* Center the social media links */
+    gap: 15px; /* Space between links */
+  }
+  
+  .social-media a {
+    color: white; /* Link color */
+    text-decoration: none; /* No underline */
+    padding: 5px 10px; /* Add padding for clickable area */
+  }
+  
+  .social-media a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Media query for larger screens */
+  @media (min-width: 600px) {
+    .footer-content {
+      flex-direction: row; /* Align items in a row on larger screens */
+      justify-content: space-between; /* Space between copyright text and social links */
+    }
+  
+    .social-media {
+      justify-content: flex-end; /* Align social media links to the right */
+    }
+  }
+  

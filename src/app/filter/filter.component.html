@@ -1,0 +1,24 @@
+<div class="filter-container">
+    <input
+      type="text"
+      placeholder="Search by company name"
+      [(ngModel)]="searchTerm"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+    <input
+      type="text"
+      placeholder="Search by job role"
+      [(ngModel)]="jobRole"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+    <input
+      type="text"
+      placeholder="Search by contact person"
+      [(ngModel)]="contactPerson"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+  </div>
+  

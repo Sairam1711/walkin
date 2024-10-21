@@ -1,0 +1,169 @@
+/* Basic header styling */
+header {
+    background-color: #003366; /* Header background color */
+    padding: 15px; /* Padding for header */
+    color: white; /* Header text color */
+    text-align: center; /* Centered text */
+    width: 100%; /* Full width */
+    margin: 0 auto; /* Center the header horizontally */
+  }
+
+  .modern-button {
+    background-color:#FF8C00; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px 24px; /* Vertical and horizontal padding */
+    font-size: 16px; /* Font size */
+    font-weight: 600; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    outline: none; /* Remove outline on focus */
+}
+
+.modern-button:hover {
+    background-color:#b06201; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.modern-button:active {
+    transform: scale(0.95); /* Slightly scale down on click */
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: black;
+    text-align: left;
+  }
+
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+  .input-field {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  /* Set maximum width based on device size */
+  @media (max-width: 600px) {
+    header {
+      max-width: 100%; /* Full width for small screens */
+    }
+  }
+  
+  @media (min-width: 601px) and (max-width: 768px) {
+    header {
+      max-width: 90%; /* 90% width for tablets */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    header {
+      max-width: 97%; /* 1200px for larger screens */
+    }
+  }
+  
+  .nav-container {
+    display: flex; /* Flexbox for navigation */
+    justify-content: space-between; /* Space between logo and nav items */
+    align-items: center; /* Center items vertically */
+    flex-wrap: wrap; /* Allow items to wrap in smaller screens */
+  }
+  
+  .logo h1 {
+    margin: 0; /* Remove margin for logo */
+  }
+  
+  nav ul {
+    list-style-type: none; /* No bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Flex display for nav items */
+  }
+  
+  nav ul li {
+    margin: 0 10px; /* Space between nav items */
+  }
+  
+  nav ul li a {
+    color: white; /* Nav link color */
+    text-decoration: none; /* No underline */
+    font-weight: bold; /* Bold text */
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Hamburger menu icon */
+  .hamburger {
+    display: none; /* Hide by default */
+    font-size: 30px; /* Size of hamburger icon */
+    cursor: pointer; /* Pointer cursor */
+  }
+  
+  /* Responsive styles for mobile */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column; /* Stack items vertically */
+      display: none; /* Hide the menu by default */
+    }
+  
+    .hamburger {
+      display: block; /* Show the hamburger menu on small screens */
+    }
+  
+    .show-menu {
+      display: flex; /* Show the menu when hamburger is clicked */
+    }
+  
+    .nav-container {
+      flex-direction: column; /* Stack items vertically on small screens */
+      align-items: flex-start; /* Align items to the start */
+      width: 100%; /* Full width for nav container */
+    }
+  
+    nav ul li {
+      margin: 10px 0; /* Space between stacked items */
+    }
+  }
+  
