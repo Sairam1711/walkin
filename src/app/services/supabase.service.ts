@@ -45,6 +45,27 @@ export class SupabaseService {
 
     return { data, error };
   }
-
+   industries = [
+    "Information Technology (IT)",
+    "Healthcare and Medicine",
+    "Manufacturing",
+    "Retail and E-commerce",
+    "Finance and Banking",
+    "Construction",
+    "Education and Training",
+    "Transportation and Logistics",
+    "Hospitality and Tourism",
+    "Media and Entertainment",
+    "Telecommunications",
+    "Automotive",
+    "Agriculture",
+    "Energy and Utilities",
+    "Real Estate",
+    "Legal Services",
+    "Food and Beverage",
+    "Marketing and Advertising",
+    "Pharmaceuticals",
+    "Non-profit and NGOs"
+  ];
   // Add more methods for authentication, CRUD operations, etc.
 }

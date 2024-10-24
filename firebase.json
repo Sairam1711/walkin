@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/wake-in/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

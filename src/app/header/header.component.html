@@ -1,50 +1,130 @@
-<header>
+
+
+ <header>
     <div class="nav-container">
       <div class="logo">
-        <h1>WalkIn</h1>
+        <h2>walknow</h2>
       </div>
-      <div class="hamburger" ng-click="toggleMenu()">
-        &#9776; <!-- This is the hamburger icon -->
-      </div>
+      <!-- <div class="hamburger" ng-click="toggleMenu()"> -->
+        <!-- &#9776; This is the hamburger icon -->
+      <!-- </div> -->
       <!-- <nav>
         <ul [ngClass]="{'show-menu': menuOpen}">
           <li *ngFor="let list of menu"><a href="#" >{{list}}</a></li>
          \
         </ul>
       </nav> -->
-      <div *ngIf="selectedCard" class="popup">
-        <div class="popup-content">
-          <span class="close" (click)="closePopup()">&times;</span>
       
-          <!-- Input field for Title -->
-          <label for="title"><strong>Title:</strong></label>
-          <input id="title"  type="text" required [(ngModel)]="newData.title"  class="input-field" />
       
-          <!-- Input field for Company Name -->
-          <label for="companyName"><strong>Company Name:</strong></label>
-          <input id="companyName" type="text" required [(ngModel)]="newData.title" class="input-field" />
       
-          <!-- Input field for Mobile -->
-          <label for="mobile"><strong>Mobile:</strong></label>
-          <input id="mobile"  type="text" required [(ngModel)]="newData.title" class="input-field" />
       
-          <!-- Input field for Contact Person -->
-          <label for="contactPerson"><strong>Contact Person:</strong></label>
-          <input id="contactPerson"  type="text" required [(ngModel)]="newData.title" class="input-field" />
       
-          <!-- Input field for Job Role -->
-          <label for="jobRole"><strong>Job Role:</strong></label>
-          <input id="jobRole"  type="text" required [(ngModel)]="newData.title" class="input-field" />
-      
-          <!-- Input field for Description -->
-          <label for="description"><strong>Description:</strong></label>
-          <textarea id="description" required [(ngModel)]="newData.title"  class="input-field"></textarea>
-      
-          <!-- Submit button -->
-          <button  class="submit-button">Submit</button>
-        </div>
-      
-      </div>
-      <button class="modern-button" (click)="openPopup()">Add WalkIn</button>
+      <button class="modern-button" (click)="openPopup()">Post WalkIn</button>
     </div>
   </header>
+  <div *ngIf="selectedCard" class="popup">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+  
+      <mat-horizontal-stepper>
+        <mat-step label="Basic Information" style="display: flex; justify-content: space-between;">
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <!-- Input field for Title -->
+            <mat-form-field appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput required [(ngModel)]="newData.title" />
+            </mat-form-field>
+     <!-- Input field for Industry -->
+     <mat-form-field appearance="fill">
+      <mat-label>Industry</mat-label>
+      <input 
+        #input
+        type="text"
+        placeholder="Pick one"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        (input)="filter()"
+        (focus)="filter()"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true">
+        @for (option of filteredOptions; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+            <!-- Input field for Company Name -->
+            <mat-form-field appearance="fill">
+              <mat-label>Company Name</mat-label>
+              <input matInput required [(ngModel)]="newData.companyName" />
+            </mat-form-field>
+  
+            <!-- Input field for Mobile -->
+            <mat-form-field appearance="fill">
+              <mat-label>Mobile</mat-label>
+              <input matInput required [(ngModel)]="newData.mobile" />
+            </mat-form-field>
+  
+         
+  
+            <!-- Input field for Job Role -->
+            <mat-form-field appearance="fill">
+              <mat-label>Job Role</mat-label>
+              <input matInput required [(ngModel)]="newData.jobRole" />
+            </mat-form-field>
+  
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </div>
+        </mat-step>
+  
+        <mat-step label="Description & Date">
+          <!-- Input field for Description -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput required [(ngModel)]="newData.description"></textarea>
+            </mat-form-field>
+  
+            <!-- Input field for Walk-In Date -->
+            <mat-form-field appearance="fill">
+              <mat-label>Walk-In Date</mat-label>
+              <input matInput type="date" required [(ngModel)]="newData.walkInDate" />
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+  
+        <mat-step label="Location">
+          <!-- Walk-In Location using a String -->
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <p class="location-note">Note: Please add the walk-in location by selecting it on the Google Map.</p>
+          <mat-form-field appearance="fill">
+            <mat-label>Walk-In Location</mat-label>
+            <input matInput required [(ngModel)]="newData.walkInLocation" />
+          </mat-form-field>
+            <!-- Note for Google Maps Location -->
+         
+          <mat-form-field appearance="fill">
+            <mat-label>city</mat-label>
+            <input matInput required [(ngModel)]="newData.walkInLocation" />
+          </mat-form-field>
+        
+        </div>
+          <!-- Google Maps for location selection -->
+          <div class="map-container">
+            <div id="map" class="map"></div>
+          </div>
+  
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="submitForm()">Submit</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>

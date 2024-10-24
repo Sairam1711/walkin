@@ -1,28 +1,188 @@
 .filter-container {
     display: flex;
+    justify-content: center;
+    text-align: center;
     flex-direction: column; /* Stack inputs vertically on mobile */
     gap: 10px;
-    margin-bottom: 20px;
     padding: 10px;
+    width:100%;
   }
   
-  .filter-input {
-    padding: 10px;
+  .example-form {
+  
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    
+    
+  }
+  .example-full-width {
+    width: 20%;
+  }
+  .autocomplete-container {
+    position: relative;
+    width: 300px; /* Adjust as needed */
+  }
+  
+  .autocomplete-input {
+    width: 100%;
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%; /* Full width for mobile */
-    max-width: none; /* Remove max-width to allow full width */
+    border-radius: 4px;
   }
   
+  .autocomplete-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    background: white;
+
+  }
+  
+  .autocomplete-suggestions ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  .modern-button {
+    background-color:#007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px 20px; /* Vertical and horizontal padding */
+    font-size: 16px; /* Font size */
+    font-weight: 600; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    outline: none; /* Remove outline on focus */
+}
+
+.modern-button:hover {
+    background-color: #0056b3;; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.result-box ul li {
+  list-style: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+ 
+
+}
+.autocomplete:focus + .result-box{
+  display: block;
+}
   /* Responsive styles */
-  @media (min-width: 600px) {
+  @media (max-width: 600px) {
     .filter-container {
-      flex-direction: row; /* Row layout for larger screens */
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column; /* Stack inputs vertically on mobile */
+      gap: 10px;
+      padding: 10px;
+    }
+    .example-form{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
       justify-content: space-between;
+     height: 40%;
+    
     }
-  
-    .filter-input {
-      max-width: 300px; /* Max width for larger screens */
+    .example-full-width {
+ text-align: center;
+      width: 100%;
     }
+    .filter-container{
+      width: 90%;
+    }
+    .modern-button {
+      background-color:#007bff; /* Primary color */
+      color: white; /* Text color */
+      border: none; /* No border */
+      border-radius: 5px; /* Rounded corners */
+      padding: 10px 14px; /* Vertical and horizontal padding */
+      font-size: 15px; /* Font size */
+      font-weight: 300; /* Font weight */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+      outline: none; /* Remove outline on focus */
   }
+  input{
+    border-radius: 10px;
+      height: 30px;
+      background-color: white;
+      border: none;
+      font-weight: 100;
+      width: 100%;
+      
+  }
+  .result-box{
+ 
+    overflow:auto;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+    height: 150px;
+
+  }
+  }
+ 
+  @media (min-width: 769px) { 
+    .example-form{
+      border-color: black;
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      width: 50%;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 20px 9px rgb(182, 186, 189);
+      margin: 0;
+      transform: translate(400px,0);
+      
+          }
+    input{
+      border-radius: 10px;
+      height: 30px;
+      background-color: white;
+      border: none;
+      font-weight: 100;
+      width: 100%;
+      height: 50px;
+      border-style: none;
+      
+    }
+    input:focus {
+      outline: none;
+  }
+  .result-box{
+ 
+    position:absolute;
+    transform: translateZ(200);
+    top: 50px;
+    right: 100px;
+    height: 150px;
+    width: 30%;
+    overflow:auto;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+  }
+  }
+  
   

@@ -1,8 +1,8 @@
 /* footer.component.css */
 
 .footer {
-    background-color: #003366; /* Footer background color */
-    color: white; /* Footer text color */
+    background-color: white ; /* Footer background color */
+    color:#003366; /* Footer text color */
     padding: 20px; /* Padding for footer */
     text-align: center; /* Centered text */
     width: 100%; /* Full width */
@@ -12,7 +12,12 @@
   /* Set maximum width based on device size */
   @media (max-width: 600px) {
     .footer {
-      max-width: 100%; /* Full width for small screens */
+      max-width: 90%; /* Full width for small screens */
+      font-size: 3vw
+    }
+    .social-media{
+      display: flex;
+      flex-direction: column;
     }
   }
   
@@ -46,7 +51,7 @@
   }
   
   .social-media a {
-    color: white; /* Link color */
+    color:#003366; /* Link color */
     text-decoration: none; /* No underline */
     padding: 5px 10px; /* Add padding for clickable area */
   }

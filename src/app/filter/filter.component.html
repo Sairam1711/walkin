@@ -1,24 +1,71 @@
 <div class="filter-container">
-    <input
-      type="text"
-      placeholder="Search by company name"
-      [(ngModel)]="searchTerm"
-      (input)="onFilterChange()"
-      class="filter-input"
-    />
-    <input
-      type="text"
-      placeholder="Search by job role"
-      [(ngModel)]="jobRole"
-      (input)="onFilterChange()"
-      class="filter-input"
-    />
-    <input
-      type="text"
-      placeholder="Search by contact person"
-      [(ngModel)]="contactPerson"
-      (input)="onFilterChange()"
-      class="filter-input"
-    />
-  </div>
+ <h1>Find your best walk in </h1> 
+  <div class="example-form">
+   
+      <input
+        matInput
+        placeholder="Search by company name"
+        [(ngModel)]="searchTerm"
+        (input)="filterIndustries()"
+      />
+ 
+      <input
+        matInput
+        placeholder="Search by job role"
+        [(ngModel)]="jobRole"
+        (input)="filterIndustries()"
+      />
+      <input
+      class="autocomplete"
+    type="text"
+    placeholder="Search for an industry"
+    [(ngModel)]="searchTerm"
+    (input)="onInputChange()"
+  autocomplete="on"
+ 
+  />
   
+    
+  <div class="result-box">
+    <ul *ngFor="let industry of industries" >
+      <li>{{industry}}</li>
+      
+    </ul>
+
+  </div>
+ 
+       
+        <button class="modern-button">
+          Search
+        </button>
+        <!-- <div class="autocomplete-suggestions" *ngIf="filteredIndustries.length > 0">
+          <ul>
+            <li>asasasas</li>
+            <li>asasasas</li>
+            <li
+              *ngFor="let industry of industries"
+              (click)="selectIndustry(industry)"
+              class="suggestion-item"
+            >
+              {{ industry }}
+            </li>
+          </ul>
+        </div> -->
+     
+      
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Industry</mat-label>
+      <input
+        matInput
+        placeholder="Search by industry"
+        [formControl]="industryControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true">
+        <mat-option *ngFor="let option of industries" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field> -->
+  </div>
+</div>

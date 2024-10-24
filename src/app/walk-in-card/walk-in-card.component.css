@@ -1,23 +1,25 @@
-/* wake-card.component.css */
-
+/* Card Container */
+.walk-in{
+  background-color: #f6f6f6f6;
+}
 .card-container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center the cards */
-    gap: 20px; /* Space between cards */
-    padding: 20px; /* Padding around the container */
-    height: calc(100vh - 160px); /* Set height to fill space between header and footer */
-    overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
-  }
-  
-  /* wake-card.component.css */
-
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* Center the cards */
+  gap: 20px; /* Space between cards */
+  padding: 20px; /* Padding around the container */
+  height: calc(100vh - 160px); /* Set height to fill space between header and footer */
+  overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
+ 
+}
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 50px;
   padding: 20px;
+  color: rgb(72, 69, 69);
+  
 }
 
 /* Card Styles */
@@ -27,16 +29,64 @@
   border-radius: 8px;
   padding: 16px;
   flex: 1 1 300px; /* Responsive width */
-  max-width: 300px;
+  max-width: 320px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  height: 100%; /* Keep the height flexible */
+  height: auto; /* Flexible height */
+  display: flex; /* Flexbox for content alignment */
+  flex-direction: row; /* Align items vertically */
+  align-items: center; /* Center items horizontally */
+
 }
 
-.card h2 {
-  margin-top: 0;
+.card-content {
+  flex-grow: 1; /* Allow the content to grow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} 
+.card-content span{
+top: 3px;
+}
+mat-icon{
+  transform: translate(0,3px);
+  color: #89949f;
+}
+.block1{
+  display: grid;
+  width: 80%;
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+}
+.item3 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.card:hover {
+  transform: translatez(-10px); /* Slight lift-up effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  background-color: #f9f9f9; /* Subtle background color change */
+
+}
+.item0{
+  text-align: center;
+}
+/* Title and Button Styles */
+.card h1 {
+  margin: 0; /* Remove default margin */
+  text-align: center; /* Center the title */
+  color: rgb(45, 42, 42);
 }
 
+.button-group {
+  display: flex; /* Use flexbox for button group */
+  justify-content: space-between; /* Space buttons evenly */
+  margin-top: 10px; /* Space above buttons */
+  width: 100%;
+}
+
+/* Button Styles */
 .card button {
   background-color: #007bff;
   color: white;
@@ -48,7 +98,7 @@
 }
 
 .card button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darken button on hover */
 }
 
 /* Pagination styles */
@@ -76,129 +126,156 @@
 }
 
 .pagination button:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darken button on hover */
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: row; /* Stack cards vertically on smaller screens */
-    align-items: center; /* Center align cards */
-  }
+/* mobile */
+.text-truncate {
+     /* Prevent text from wrapping to the next line */
+  overflow: hidden;          /* Hide the text that overflows the container */
+  text-overflow: ellipsis;   /* Display "..." when text overflows */
+     /* Make the element respect width restrictions */
+  max-width: 200px;          /* Set a max width to limit the visible area */
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 90%; /* Make popup responsive */
+  max-width: 500px; /* Max width for larger screens */
+  height: auto; /* Adjust height based on content */
+}
 
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h2 {
+  margin: 0;
+}
+
+.popup-content {
+  margin-top: 15px;
+}
+
+.popup button {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0056b3; /* Darken button on hover */
+}
+
+
+  
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+
+}
+
+.pagination button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button[disabled] {
+  background-color: #ccc; /* Gray background for disabled button */
+  cursor: not-allowed; /* Not allowed cursor */
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+h1{
+  text-align: center;
+}
+.info{
+  text-align: center;
+  padding: 4px;
+}
+.info b{
+  color:#265df5 ;
+}
+.info span{
+  color: #5882f6;
+}
+@media (max-width: 768px) { 
+  .card-container {
+  flex-direction: row; /* Stack cards vertically on smaller screens */
+  align-items: center; /* Center align cards */
+}
+.button-group{
+  display: flex;
+  flex-direction: column;
+  height: 100px
+}
   .card {
+    
     max-width: 100%; /* Full width on small screens */
     margin-bottom: 20px; /* Space between cards */
   }
-}
-.button-group{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-  /* popup.component.css */
 
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    width: 90%; /* Make popup responsive */
-    max-width: 500px; /* Max width for larger screens */
-    height: auto; /* Adjust height based on content */
+  .popup {
+    width: 95%; /* Slightly narrower on smaller screens */
   }
-  
-  .popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .popup-header h2 {
-    margin: 0;
-  }
-  
-  .popup-content {
-    margin-top: 15px;
-  }
-  
-  .popup button {
-    margin-top: 20px;
+  .card button {
     background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .popup button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Media Queries for Popup Responsiveness */
-  @media (max-width: 768px) {
-    .popup {
-      width: 95%; /* Slightly narrower on smaller screens */
-    }
-  }
-  
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 15px;
-  }
-  
-  .pagination button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
-  .pagination button[disabled] {
-    background-color: #ccc; /* Gray background for disabled button */
-    cursor: not-allowed; /* Not allowed cursor */
+}
+
+@media (min-width: 769px) {
+  .card {
+    
+    width: 350px; /* Maintain fixed width on larger screens */
+    height: auto; /* Maintain flexible height */
   }
-  
-  .pagination button:hover:not(:disabled) {
-    background-color: #0056b3;
+  .popup {
+    width: 95%; /* Slightly narrower on smaller screens */
   }
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    .card {
-      width: 100%; /* Full width for smaller screens */
-      max-width: 90%; /* Limit max width */
-      height: auto; /* Auto height for flexibility */
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .card {
-      width: 350px; /* Maintain fixed width on larger screens */
-      height: 250px; /* Maintain fixed height on larger screens */
-    }
-  }
-  
-  /* Pagination styles */
-  
+}
+
+@media (max-width: 600px) {
+.popup-content,.popup{
+
+  width: 80%;
+}
+
+}

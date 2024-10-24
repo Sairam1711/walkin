@@ -3,11 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { SupabaseService } from '../services/supabase.service';
 import { FormsModule } from '@angular/forms';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-walk-in-card',
   standalone: true,
-  imports: [CommonModule,FilterComponent,FormsModule,CommonModule],
+  imports: [CommonModule,FilterComponent,FormsModule,CommonModule,  MatCardModule,
+    MatButtonModule,MatTooltipModule,MatIconModule],
   templateUrl: './walk-in-card.component.html',
   styleUrl: './walk-in-card.component.css'
 })
@@ -61,6 +65,7 @@ copyLocation(mobile: string) {
 }
 
 openPopup(card: any) {
+  console.log("click");
   this.selectedCard = card; // Set the selected card
 }
 
@@ -97,6 +102,11 @@ onFilterChange(filter: any) {
     this.loadData(this.currentPage,{description:searchTerm,job_role:jobRole,contact_person:contactPerson});
    
 }
-
+truncateText(text: string, limit: number): string {
+  if (text.length > limit) {
+    return text.slice(0, limit) + '...';
+  }
+  return text; // Return original text if it's shorter than the limit
+}
 
 }

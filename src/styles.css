@@ -1,22 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-.modern-button {
-    background-color:#FF8C00; /* Primary color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 12px 24px; /* Vertical and horizontal padding */
-    font-size: 16px; /* Font size */
-    font-weight: 600; /* Font weight */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
-    outline: none; /* Remove outline on focus */
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.modern-button:hover {
-    background-color:#02284e; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly scale up on hover */
-}
-
-.modern-button:active {
-    transform: scale(0.95); /* Slightly scale down on click */
-}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* For headers */
+  }
+  
+  p, body {
+    font-family: 'Open Sans', sans-serif; /* For body text */
+  }
+  
