@@ -199,7 +199,7 @@ h1{
 }
 .info{
   text-align: center;
-  padding: 4px;
+  padding: 8px;
 }
 .info b{
   color:#265df5 ;
@@ -325,7 +325,7 @@ h1{
   width: 100%; /* Maintain fixed width on larger screens */
   height: 50%;
   margin: auto;}
-  
+
 .card-content{
   width: 100%;
   height: 100%;
