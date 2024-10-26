@@ -1,7 +1,7 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { SupabaseService } from '../services/supabase.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +16,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule, ReactiveFormsModule,MatAutocompleteModule,
-    AsyncPipe,],
+    AsyncPipe,RouterLink],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'] // Corrected from styleUrl to styleUrls
 })

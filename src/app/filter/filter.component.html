@@ -1,20 +1,25 @@
 <div class="filter-container">
  <h1>Find your best walk in </h1> 
   <div class="example-form">
-   
+    <div class="icon">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search "></mat-icon>
+    </div>
+ 
+    <div class="input1">
       <input
-        matInput
+      
         placeholder="Search by role / companies / city"
         [(ngModel)]="searchTerm"
        
-      />
- 
+      /></div>
+      <div>
       <input
         matInput
         placeholder="Search by job role"
         [(ngModel)]="jobRole"
      
-      />
+      /></div>
+     
       <input
       class="autocomplete"
     type="text"

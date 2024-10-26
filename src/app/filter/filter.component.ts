@@ -8,12 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import {map, startWith} from 'rxjs/operators';
 import { SupabaseService } from '../services/supabase.service';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-filter',
   standalone: true,
   imports: [ CommonModule, FormsModule, MatStepperModule,
     MatInputModule, MatButtonModule,
-    MatFormFieldModule, ReactiveFormsModule,MatAutocompleteModule],
+    MatFormFieldModule, ReactiveFormsModule,MatAutocompleteModule,MatIconModule],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })

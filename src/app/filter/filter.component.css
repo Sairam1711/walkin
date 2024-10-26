@@ -162,28 +162,33 @@
   h1{
     width: 100%;
   }
+  mat-icon{
+    display: none;
+  }
   }
  
   @media (min-width: 769px) { 
     .example-form{
-      border-color: black;
+      border-color: rgb(140, 135, 135);
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       background-color: white;
-      width: 50%;
-      border-radius: 10px;
+      width: 55%;
+      border-radius: 20px;
       text-align: center;
-      box-shadow: 10px 6px rgb(134, 161, 182);
+      box-shadow: 2px 5px 5px 6px rgb(193, 197, 200);
       margin: 0;
-      transform: translate(400px,0);
+      transform: translate(350px,0);
       
           }
     input{
-      border-radius: 10px;
+    
       height: 30px;
-      background-color: white;
+      background-color: rgb(249, 249, 249);
+      
       border: none;
-      font-weight: 100;
+      font-weight: 400;
+      font-size:medium;
       width: 100%;
       height: 50px;
       border-style: none;
@@ -214,6 +219,35 @@
     display: none;
     scrollbar-width: none;
   }
+  mat-icon{
+    transform: translate(8px,8px);
+    color: #89949f;
+  justify-content: center;
+    text-align: center;
+    scale: 1.5;
+  }
+  .modern-button {
+    background-color:#007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 15px; /* Rounded corners */
+  /* Vertical and horizontal padding */
+    font-size:medium; /* Font size */
+    font-weight: 600; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    outline: none; /* Remove outline on focus */
+    margin: 0;
+}
+.autocomplete{
+  width: 20%;
+}
+.input1{
+  width: 30%;
+}
+.icon{
+  width: 7%;
+}
   }
   
   

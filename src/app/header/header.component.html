@@ -2,7 +2,7 @@
 
  <header>
     <div class="nav-container">
-      <div class="logo">
+      <div routerLink="/" class="logo">
         <h2>walknow</h2>
       </div>
       <!-- <div class="hamburger" ng-click="toggleMenu()"> -->
@@ -16,10 +16,11 @@
       </nav> -->
       
       
-      
-      
-      
+     
       <button class="modern-button" (click)="openPopup()">Post WalkIn</button>
+      
+      
+     
     </div>
   </header>
   <div *ngIf="selectedCard" class="popup">

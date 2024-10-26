@@ -7,9 +7,10 @@ header {
     color: white; /* Header text color */
     text-align: center; /* Centered text */
     padding: 10px;
-    width: 100%; /* Full width */
+    width: 90%; /* Full width */
     margin: 0 auto; /* Center the header horizontally */
-    box-shadow: 0px 10px rgb(70, 70, 72);
+    box-shadow: 0px 5px rgb(115, 115, 119);
+    z-index: 9;
   }
   mat-form-field {
     margin-bottom: 15px; /* Space below each input field */
@@ -95,14 +96,14 @@ header {
   
   .nav-container {
     display: flex; /* Flexbox for navigation */
-    justify-content: space-between; /* Space between logo and nav items */
+    justify-content: space-around; /* Space between logo and nav items */
     align-items: center; /* Center items vertically */
-    /* Allow items to wrap in smaller screens */
+    gap: 500px;/* Allow items to wrap in smaller screens */
   }
   
 .logo {
     /* Remove margin for logo */
- 
+ cursor: pointer;
     color: #265df5;
    
   }
@@ -233,9 +234,9 @@ header {
   }
   @media (max-width: 600px) {
     header {
-      max-width: 95%; /* Full width for small screens */
+      max-width: 100%; /* Full width for small screens */
      flex-direction: row;
-     padding: 5px;
+   
 
     }
     
@@ -243,17 +244,31 @@ header {
       max-width: 97%; 
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
+      gap: 100px;
       text-align: center;
      
     }
     .popup{
       width: 80%;
     }
+    .modern-button {
+      background-color:#007bff; /* Primary color */
+      color: white; /* Text color */
+      border: none; /* No border */
+      border-radius: 5px; /* Rounded corners */
+      padding: 12px 24px; /* Vertical and horizontal padding */
+      font-size:small; /* Font size */
+      font-weight: 200; /* Font weight */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+      outline: none; /* Remove outline on focus */
+  }
   }
   
   @media (min-width: 601px) and (max-width: 768px) {
     header {
-      max-width: 90%; /* 90% width for tablets */
+      max-width: 100%; /* 90% width for tablets */
     }
    
   }

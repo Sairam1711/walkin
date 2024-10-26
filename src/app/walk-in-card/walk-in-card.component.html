@@ -50,7 +50,8 @@
     </div>
 
     <div class="card"  *ngIf="cards.length===0" >
-      <h1>No Record Found</h1>
+      
+      <h1>Loading...</h1>
           </div>
     <div class="pagination">
       <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
