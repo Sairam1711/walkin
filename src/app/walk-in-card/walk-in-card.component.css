@@ -1,35 +1,38 @@
 /* Card Container */
 .walk-in{
   background-color: #f6f6f6f6;
+  display: flex;
+  flex-direction: column;
+ 
 }
 .card-container {
+
   display: flex; /* Use flexbox for layout */
-  flex-wrap: wrap; /* Allow items to wrap */
+ flex-wrap:wrap;/* Allow items to wrap */
+ flex-direction: row-reverse;
   justify-content: center; /* Center the cards */
   gap: 20px; /* Space between cards */
   padding: 20px; /* Padding around the container */
   height: calc(100vh - 160px); /* Set height to fill space between header and footer */
-  overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
+  overflow: auto; /* Allow vertical scrolling if content exceeds height */
  
 }
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
-  padding: 20px;
   color: rgb(72, 69, 69);
   
 }
 
 /* Card Styles */
 .card {
+
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
-  flex: 1 1 300px; /* Responsive width */
-  max-width: 320px;
+  /* Responsive width */
+  max-width: "50%";
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   height: auto; /* Flexible height */
@@ -37,52 +40,24 @@
   flex-direction: row; /* Align items vertically */
   align-items: center; /* Center items horizontally */
 
+ 
+
 }
 
-.card-content {
-  flex-grow: 1; /* Allow the content to grow */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} 
-.card-content span{
-top: 3px;
-}
-mat-icon{
-  transform: translate(0,3px);
-  color: #89949f;
-}
-.block1{
-  display: grid;
-  width: 80%;
-  text-align: center;
-  justify-content: center;
-  margin: 0;
-}
-.item3 {
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
+
+
 .card:hover {
   transform: translatez(-10px); /* Slight lift-up effect */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
   background-color: #f9f9f9; /* Subtle background color change */
 
 }
-.item0{
-  text-align: center;
-}
-/* Title and Button Styles */
-.card h1 {
-  margin: 0; /* Remove default margin */
-  text-align: center; /* Center the title */
-  color: rgb(45, 42, 42);
-}
 
 .button-group {
   display: flex; /* Use flexbox for button group */
   justify-content: space-between; /* Space buttons evenly */
-  margin-top: 10px; /* Space above buttons */
+  /* Space above buttons */
+ margin: auto;
   width: 100%;
 }
 
@@ -91,9 +66,12 @@ mat-icon{
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
+  width: 20%;
   border-radius: 5px;
+  margin: 0;
   cursor: pointer;
+  text-align: center;
+  justify-content: center;
   transition: background-color 0.3s;
 }
 
@@ -104,19 +82,23 @@ mat-icon{
 /* Pagination styles */
 .pagination {
   display: flex;
+  width: 70%;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   gap: 15px;
 }
 
 .pagination button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+
   background-color: #007bff;
   color: white;
+  border: none;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  margin: 0;
   cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s;
 }
 
@@ -136,7 +118,7 @@ mat-icon{
   overflow: hidden;          /* Hide the text that overflows the container */
   text-overflow: ellipsis;   /* Display "..." when text overflows */
      /* Make the element respect width restrictions */
-  max-width: 200px;          /* Set a max width to limit the visible area */
+      /* Set a max width to limit the visible area */
 }
 .popup {
   position: fixed;
@@ -194,20 +176,11 @@ mat-icon{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   gap: 15px;
 
 }
 
-.pagination button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+
 
 .pagination button[disabled] {
   background-color: #ccc; /* Gray background for disabled button */
@@ -217,7 +190,10 @@ mat-icon{
 .pagination button:hover:not(:disabled) {
   background-color: #0056b3;
 }
-
+mat-icon{
+  transform: translate(0,5px);
+  color: #89949f;
+}
 h1{
   text-align: center;
 }
@@ -235,40 +211,107 @@ h1{
   .card-container {
   flex-direction: row; /* Stack cards vertically on smaller screens */
   align-items: center; /* Center align cards */
+  gap: 10px;
 }
 .button-group{
   display: flex;
   flex-direction: column;
   height: 100px
 }
+.card-logo{
+  display: none;
+}
+.card button{
+  width: 70%;
+}
   .card {
     
     max-width: 100%; /* Full width on small screens */
     margin-bottom: 20px; /* Space between cards */
   }
-
+h1{
+  margin: 0;
+}
   .popup {
     width: 95%; /* Slightly narrower on smaller screens */
   }
   .card button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    background-color:#007bff; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px 24px; /* Vertical and horizontal padding */
+    font-size: 16px; /* Font size */
+    font-weight: 600; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+    outline: none; /* Remove outline on focus */
+    width: 100%;
+    text-align: center;
+  }
+  .item-4{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    gap: 4px;
+  }
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
 @media (min-width: 769px) {
   .card {
     
-    width: 350px; /* Maintain fixed width on larger screens */
-    height: auto; /* Maintain flexible height */
+    width: 60%; /* Maintain fixed width on larger screens */
+    height: 50%;
+    margin: auto
+
+    /* Maintain flexible height */
+  }
+  h1{
+    margin: auto;
   }
   .popup {
     width: 95%; /* Slightly narrower on smaller screens */
+  }
+  .card-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  .item-1{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+ 
+  }
+  .item-2{
+    display: flex;
+  flex-direction: column;
+    gap: 5px;
+   
+  }
+.item-4{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+  .card-logo{
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    justify-content: center;
+  }
+  .pagination button {
+    width: 20%;
   }
 }
 

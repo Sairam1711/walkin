@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -8,36 +10,44 @@ export class SupabaseService {
   private supabaseUrl = 'https://wgyosliqoivyowjliubq.supabase.co';
   private supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndneW9zbGlxb2l2eW93amxpdWJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUzMDg5NzksImV4cCI6MjA0MDg4NDk3OX0.f1uzZrTkeJlmGKEDSTBGwDOrGV2jdLhqnZMgMLODc1o';
   private supabase: SupabaseClient;
+  cards :any
+  constructor(private http: HttpClient) {
+    this.supabase = createClient(this.supabaseUrl, this.supabaseKey)
 
-  constructor() {
-    this.supabase = createClient(this.supabaseUrl, this.supabaseKey);
   }
 
   // Method to fetch data from a specific table
   async getData(tableName: string, page: number, limit: number, filters: any) {
     const start = (page - 1) * limit;
     const end = start + limit - 1;
-
+  
     let query = this.supabase.from(tableName).select('*', { count: 'exact' }).range(start, end);
-
+  
     // Apply filters if they exist
-    if (filters.company_name) {
-      query = query.ilike('company_name', `%${filters.company_name}%`);
+    if (filters.employer_name) {
+      const terms = filters.employer_name.split(' ').map((term: any)=> `%${term}%`);
+      terms.forEach((term: any)=> {
+        query = query.or(`job_city.ilike.${term},job_title.ilike.${term},job_role.ilike.${term},employer_name.ilike.${term}`);
+      });
     }
     if (filters.job_role) {
       query = query.ilike('job_role', `%${filters.job_role}%`);
     }
-
+    if (filters.industry) {
+      query = query.ilike('industry', `%${filters.industry}%`);
+    }
+  
     // Execute query
     const { data, count, error } = await query;
-
+  
     if (error) {
       console.error('Error fetching data:', error);
-      return { data: [], count: 0 };
+      return { data: [], total: 0 };
     }
-
-    return { data: data || [], count: count || 0 };
+    this.cards=data
+    return { data: data || [], total: count || 0 };
   }
+  
   async adddata(wdata: any, tableName: string) {
     const { data, error } = await this.supabase
       .from(tableName) // Use the table name passed as a parameter
@@ -67,5 +77,23 @@ export class SupabaseService {
     "Pharmaceuticals",
     "Non-profit and NGOs"
   ];
+
+  private url = 'https://jsearch.p.rapidapi.com/search?query=tamilnadu walkin &page=2&num_pages=1&date_posted=all';
+  private headers = new HttpHeaders({
+    'x-rapidapi-key': 'ca7ac31055mshbf6d44b7e6850f3p171fb1jsn09f34abc7362',
+    'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+  });
+
+ 
+
+  getJobs() {
+    return this.http.get(this.url, { headers: this.headers, responseType: 'json' }).pipe(
+      catchError(error => {
+        console.error('Error fetching job data', error);
+        return throwError(error);
+      })
+    );
+  }
+
   // Add more methods for authentication, CRUD operations, etc.
 }

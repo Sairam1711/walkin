@@ -1,73 +1,63 @@
-<div class="walk-in"><app-filter (filterChange)="onFilterChange($event)"></app-filter>
-   <div class="info"> <B> page  1-20 </B>        <span>     here {{1000}}+ walkin avaiable</span>   </div> 
-<div class="card-container">
-  <div class="card" *ngFor="let card of cards">
-    <div class="card-content">
-      <!-- Job Role with text overflow handling and tooltip -->
-     <div class="item0">
-      <h1   matTooltip="{{ card.job_role }}" matTooltipPosition="above">
-        {{ truncateText( card.job_role,13 )}}
-      </h1>
-      <span class="text-truncate" matTooltip="{{ card.company_name }}" matTooltipPosition="above">
-        {{ truncateText (card.company_name,11)}}
-      </span>
-    </div> 
-     
-      <div class="block1">
-      
-      <!-- Company Name -->
-      <p class="item2">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="business_center"></mat-icon>
-        <span class="text-truncate" matTooltip="{{ card.industry }}" matTooltipPosition="above">
-          {{ truncateText (card.industry,11)}}
-        </span>
-      </p>
-  
-      <!-- Mobile -->
-      <p class="item4">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
-        <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
-          {{ card.mobile }}
-        </span>
-      </p>
-  
-      <!-- Place -->
-        <p class="item3">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="place "></mat-icon>
-        <span class="text-truncate" matTooltip="{{ card.place }}" matTooltipPosition="above">
-         
-          Hiring office located in {{ card.place | slice:0:10 }}
-        </span>
-      </p>
-  
-      <!-- Date -->
-      <p class="item5">
-        
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="calendar_today"></mat-icon>
 
-        <span class="text-truncate" matTooltip="{{ card.date }}" matTooltipPosition="above">
-          {{ card.date }}
-        </span>
-      </p>
-    
+<div class="walk-in">
+  <app-filter (filterChange)="onFilterChange($event)"></app-filter>
+   <div class="info"> <B> page  {{currentPage}}-{{totalPages}} </B>        <span>     here {{totalRecords?totalRecords+'+':""}} walkin avaiable</span>   </div> 
+<div class="card-container" >
+  <div class="card"  *ngFor="let card of cards">
+    <div class="card-content">
+
+      <div class="item-1">
+        <div>
+          <h1 class="card-head" matTooltip="{{ card.job_title }}" matTooltipPosition="above">
+            {{ truncateText(card.job_title, 40) }}
+          </h1>
+          <span>{{ truncateText(card.employer_name, 20) }}</span>
+        </div>
+      <img src="https://res.cloudinary.com/dopyogopf/image/upload/f_auto,q_auto/dax3h0npppkcltdqa8si" alt="Logo" class="card-logo">
+     
     </div>
-      <!-- Button Group -->
-      <div class="button-group">
-        <button mat-button (click)="openPopup(card)">See More</button>
-        <button mat-button (click)="copyLocation(card.mobile)">Copy Location</button>
+     <div class="item-2">
       
-      </div>
-    </div>
-  </div>
-  
-  
-  
+      <span class="text-truncate" matTooltip="{{ card.job_city }}" matTooltipPosition="above"> 
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="place "></mat-icon>
+        Hiring office located in {{ card.job_city?card.job_city: card.job_state | slice:0:20 }}
+      </span>
+     </div>
+     <div class="item-3">
+      <span class="text-truncate" matTooltip="{{ card.industry }}" matTooltipPosition="above">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="business_center"></mat-icon>
+         IT/Software
+      </span>
  
-</div>
-<div class="pagination">
-  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-</div>
+        <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
+        9751813050
+        </span>
+     </div>
+     <div>
+  <span class="text-truncate" matTooltip="{{ card.job_description }}" matTooltipPosition="above">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="description"></mat-icon>
+ {{truncateText(card.job_description,100)}}
+  </span>
+     </div>
+     <div class="item-4">
+      <button class="card button" (click)="copyLocation(card.mobile)">Copy Location</button>
+      <button  class="card button" (click)="openPopup(card)" >View More</button>
+    </div>
+    </div>
+    
+   
+    </div>
+
+    <div class="card"  *ngIf="cards.length===0" >
+      <h1>No Record Found</h1>
+          </div>
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages||totalRecords===0">Next</button>
+    </div>
+   
+ 
   <!-- Popup for additional description -->
   <div *ngIf="selectedCard" class="popup">
     <div class="popup-content">
@@ -78,7 +68,7 @@
       <p><strong>Contact Person:</strong> {{ selectedCard.contact_person }}</p>
       <p><strong>Job Role:</strong> {{ selectedCard.job_role }}</p> -->
      <p><strong>Description:</strong> </p> 
-      <p>{{ selectedCard.description }}</p>
+      <p>{{ selectedCard.job_description }}</p>
     </div>
   </div>
 </div>

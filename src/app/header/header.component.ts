@@ -57,7 +57,9 @@ export class HeaderComponent implements OnInit {
       map(value => this._filter(value))
     )
     .subscribe(filteredOptions => {
-      this.filteredOptions = filteredOptions;
+      this.filteredOptions=filteredOptions
+      this.newData.industry = filteredOptions[0];
+      console.log(this.filteredOptions);
     });
   }
 
@@ -70,9 +72,16 @@ export class HeaderComponent implements OnInit {
     // Validate that all required fields are filled and location is selected
  
 
-    if (!this.newData.title || !this.newData.companyName || !this.newData.mobile || !this.newData.contactPerson || !this.newData.jobRole || !this.newData.description || !this.newData.walkInDate) {
+    if (!this.newData.job_title ||!this.newData.job_city || !this.newData.employer_name || !this.newData.mobile || !this.newData.job_role || !this.newData.job_description || !this.newData.walkInDate) {
+    console.log(this.newData);
       alert('Please fill all required fields.');
       return;
+    }else
+
+    {
+      this.newData.date=new Date
+      this.newData.status=false
+      this.supabaseService.adddata(this.newData,"walkindata")
     }
 
     console.log('Form Data:', this.newData);
@@ -83,14 +92,16 @@ export class HeaderComponent implements OnInit {
   resetForm() {
     // Reset form data to default values
     this.newData = {
-      title: '',
-      companyName: '',
+      job_title: '',
+      employer_name: '',
       mobile: '',
-      contactPerson: '',
-      jobRole: '',
+      job_role: '',
       walkInDate: '',
-      description: '',
-      walkInLocation: '' // Reset walk-in location
+      date:'',
+      job_description: '',
+      walkInLocation: '', // Reset walk-in location
+      job_location:"",
+      industry:""
     };
  
   }

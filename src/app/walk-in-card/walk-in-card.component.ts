@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { SupabaseService } from '../services/supabase.service';
 import { FormsModule } from '@angular/forms';
@@ -17,32 +17,42 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class WalkInCardComponent implements OnInit {
  // Sample data for wake events
- cards: any[] = []
+ @Input() cards: any[] = []
  cardsPerPage = 6;
  currentPage = 1;
   // Assuming 6 cards per page
  selectedCard: any = null; // To hold the card details for the popup
  limit: number = 6;
  totalRecords: number = 0;
- totalPages = Math.ceil(this.totalRecords / 6);
+ totalPages :number=0;
  constructor(private supabaseService: SupabaseService) {}
-
+ filter:any
  ngOnInit() {
    this.loadData(this.currentPage,{});
+  // this.loadData2()
  }
 
  async loadData(page: number,filter:any): Promise<void> {
  this.supabaseService.getData("walkindata", page, this.limit, filter)
     .then(result => {
       console.log( result.data);
-      this.cards = result.data;
-      this.totalRecords = result.count;
+     
+      this.totalRecords = result.total;
+      this.totalPages=Math.ceil(this.totalRecords / 6);
+      this.cards = this.supabaseService.cards;
     })
     .catch(error => {
       console.error('Error fetching employees:', error);
     });
-}
 
+}
+// async loadData2(): Promise<void>{
+  // this.supabaseService.getJobs().subscribe(
+  //   (data:any )=>  {this.cards=data.data ;
+  //     console.log(data);},
+  //   error => console.error('Error fetching data', error))
+//   this.cards=[]
+// }
 applyFilters(): void {
   this.currentPage = 1; // Reset to the first page when applying filters
   this.loadData(this.currentPage,{});
@@ -96,17 +106,18 @@ previousPage() {
 filteredCards = this.cards; // Create a copy of cards for filtering
 
 onFilterChange(filter: any) {
-  const { searchTerm, jobRole, contactPerson } = filter;
-
-   
-    this.loadData(this.currentPage,{description:searchTerm,job_role:jobRole,contact_person:contactPerson});
+  this.filter = filter;
+ this.loadData(this.currentPage,filter);
    
 }
 truncateText(text: string, limit: number): string {
+  if(text){
   if (text.length > limit) {
     return text.slice(0, limit) + '...';
   }
   return text; // Return original text if it's shorter than the limit
-}
+}else{
+  return ''
+}}
 
 }

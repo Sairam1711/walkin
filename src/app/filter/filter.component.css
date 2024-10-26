@@ -85,6 +85,9 @@
 .autocomplete:focus + .result-box{
   display: block;
 }
+.result-box:hover {
+  display: block;
+}
   /* Responsive styles */
   @media (max-width: 600px) {
     .filter-container {

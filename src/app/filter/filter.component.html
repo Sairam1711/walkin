@@ -4,22 +4,22 @@
    
       <input
         matInput
-        placeholder="Search by company name"
+        placeholder="Search by role / companies / city"
         [(ngModel)]="searchTerm"
-        (input)="filterIndustries()"
+       
       />
  
       <input
         matInput
         placeholder="Search by job role"
         [(ngModel)]="jobRole"
-        (input)="filterIndustries()"
+     
       />
       <input
       class="autocomplete"
     type="text"
     placeholder="Search for an industry"
-    [(ngModel)]="searchTerm"
+    [(ngModel)]="searchTerm2"
     (input)="onInputChange()"
   autocomplete="on"
  
@@ -28,14 +28,14 @@
     
   <div class="result-box">
     <ul *ngFor="let industry of industries" >
-      <li>{{industry}}</li>
+      <li (click)="autoclick(industry)">{{industry}}</li>
       
     </ul>
 
   </div>
  
        
-        <button class="modern-button">
+        <button (click)="search()" class="modern-button">
           Search
         </button>
         <!-- <div class="autocomplete-suggestions" *ngIf="filteredIndustries.length > 0">

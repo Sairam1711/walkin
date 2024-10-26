@@ -32,7 +32,7 @@
             <!-- Input field for Title -->
             <mat-form-field appearance="fill">
               <mat-label>Title</mat-label>
-              <input matInput required [(ngModel)]="newData.title" />
+              <input matInput required [(ngModel)]="newData.job_title" />
             </mat-form-field>
      <!-- Input field for Industry -->
      <mat-form-field appearance="fill">
@@ -56,7 +56,7 @@
             <!-- Input field for Company Name -->
             <mat-form-field appearance="fill">
               <mat-label>Company Name</mat-label>
-              <input matInput required [(ngModel)]="newData.companyName" />
+              <input matInput required [(ngModel)]="newData.employer_name" />
             </mat-form-field>
   
             <!-- Input field for Mobile -->
@@ -70,7 +70,7 @@
             <!-- Input field for Job Role -->
             <mat-form-field appearance="fill">
               <mat-label>Job Role</mat-label>
-              <input matInput required [(ngModel)]="newData.jobRole" />
+              <input matInput required [(ngModel)]="newData.job_role" />
             </mat-form-field>
   
             <div>
@@ -84,7 +84,7 @@
           <div style="display: flex; flex-direction: column; justify-content: space-between;">
             <mat-form-field appearance="fill">
               <mat-label>Description</mat-label>
-              <textarea matInput required [(ngModel)]="newData.description"></textarea>
+              <textarea matInput required [(ngModel)]="newData.job_description"></textarea>
             </mat-form-field>
   
             <!-- Input field for Walk-In Date -->
@@ -111,7 +111,7 @@
          
           <mat-form-field appearance="fill">
             <mat-label>city</mat-label>
-            <input matInput required [(ngModel)]="newData.walkInLocation" />
+            <input matInput required [(ngModel)]="newData.job_city" />
           </mat-form-field>
         
         </div>
