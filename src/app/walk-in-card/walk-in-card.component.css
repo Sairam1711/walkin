@@ -319,6 +319,16 @@ h1{
 .popup-content,.popup{
 
   width: 80%;
-}
 
+}
+.card{
+  width: 100%; /* Maintain fixed width on larger screens */
+  height: 50%;
+  margin: auto;}
+  
+.card-content{
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
 }

@@ -4,7 +4,7 @@
     text-align: center;
     flex-direction: column; /* Stack inputs vertically on mobile */
     gap: 10px;
-    padding: 10px;
+   
     width:100%;
   }
   
@@ -79,15 +79,19 @@
   border-radius: 3px;
   cursor: pointer;
   text-align: left;
+
+
  
 
 }
 .autocomplete:focus + .result-box{
   display: block;
+  box-shadow: 0px 5px 5PX rgb(116, 116, 120);
 }
 .result-box:hover {
   display: block;
 }
+
   /* Responsive styles */
   @media (max-width: 600px) {
     .filter-container {
@@ -103,6 +107,7 @@
       flex-direction: column;
       text-align: center;
       justify-content: space-between;
+      gap: 5px;
      height: 40%;
     
     }
@@ -154,7 +159,7 @@
       width: 50%;
       border-radius: 10px;
       text-align: center;
-      box-shadow: 20px 9px rgb(182, 186, 189);
+      box-shadow: 10px 6px rgb(134, 161, 182);
       margin: 0;
       transform: translate(400px,0);
       
@@ -173,6 +178,13 @@
     input:focus {
       outline: none;
   }
+  ul{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px ;
+    padding: 0;
+    gap: 7px;
+  }
   .result-box{
  
     position:absolute;
@@ -182,9 +194,11 @@
     height: 150px;
     width: 30%;
     overflow:auto;
+    text-align: left;
     background-color: white;
     z-index: 1000;
     display: none;
+    scrollbar-width: none;
   }
   }
   

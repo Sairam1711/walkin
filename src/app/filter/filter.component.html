@@ -27,8 +27,8 @@
   
     
   <div class="result-box">
-    <ul *ngFor="let industry of industries" >
-      <li (click)="autoclick(industry)">{{industry}}</li>
+    <ul  >
+      <li *ngFor="let industry of industries" (click)="autoclick(industry)">{{industry}}</li>
       
     </ul>
 

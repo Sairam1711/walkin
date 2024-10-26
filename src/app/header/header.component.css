@@ -6,7 +6,7 @@ header {
    /* Padding for header */
     color: white; /* Header text color */
     text-align: center; /* Centered text */
-    padding: 10px;
+    padding: 10pxx;
     width: 100%; /* Full width */
     margin: 0 auto; /* Center the header horizontally */
     box-shadow: 0px 10px rgb(70, 70, 72);
@@ -233,8 +233,10 @@ header {
   }
   @media (max-width: 600px) {
     header {
-      max-width: 90%; /* Full width for small screens */
+      max-width: 95%; /* Full width for small screens */
      flex-direction: row;
+     padding: 5px;
+
     }
     
     .nav-container{
@@ -242,6 +244,7 @@ header {
       display: flex;
       flex-direction: row;
       text-align: center;
+     
     }
     .popup{
       width: 80%;
@@ -257,6 +260,9 @@ header {
   
   @media (min-width: 769px) {
     header {
-      max-width: 97%; /* 1200px for larger screens */
+      max-width: 100%; /* 1200px for larger screens */
+    }
+    .nav-container{
+      height: 100%;
     }
   }
