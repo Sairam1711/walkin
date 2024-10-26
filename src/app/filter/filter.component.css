@@ -100,24 +100,28 @@
       justify-content: center;
       flex-direction: column; /* Stack inputs vertically on mobile */
       gap: 10px;
-      padding: 10px;
+      margin: auto;
+      padding: 5px;
+     
     }
     .example-form{
       display: flex;
       flex-direction: column;
-      text-align: center;
-      justify-content: space-between;
+      justify-content: space-around;
       gap: 5px;
-     height: 40%;
+ 
+   
+    
+    }
+    .example-form button{
+      width: 97%;
     
     }
     .example-full-width {
  text-align: center;
       width: 100%;
     }
-    .filter-container{
-      width: 90%;
-    }
+   
     .modern-button {
       background-color:#007bff; /* Primary color */
       color: white; /* Text color */
@@ -136,7 +140,8 @@
       background-color: white;
       border: none;
       font-weight: 100;
-      width: 100%;
+      width: 95%;
+      margin: 0;
       
   }
   .result-box{
@@ -147,6 +152,15 @@
     display: none;
     height: 150px;
 
+  }
+  ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+  h1{
+    width: 100%;
   }
   }
  
