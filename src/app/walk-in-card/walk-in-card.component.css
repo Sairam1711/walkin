@@ -238,6 +238,11 @@ h1{
     max-width: 100%; /* Full width on small screens */
     margin-bottom: 20px; /* Space between cards */
   }
+  .card-head{
+ height:40px;
+    overflow:hidden;
+
+  }
 h1{
   margin: 0;
 }
