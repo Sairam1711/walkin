@@ -103,7 +103,7 @@
         <mat-step label="Location">
           <!-- Walk-In Location using a String -->
           <div style="display: flex; flex-direction: column; justify-content: space-between;">
-            <p class="location-note">Note: Please add the walk-in location by selecting it on the Google Map.</p>
+            <p class="location-note">* Note: Please add the walk-in location by selecting it on the Google Map *.</p>
           <mat-form-field appearance="fill">
             <mat-label>Walk-In Location</mat-label>
             <input matInput required [(ngModel)]="newData.walkInLocation" />
@@ -114,13 +114,13 @@
             <mat-label>city</mat-label>
             <input matInput required [(ngModel)]="newData.job_city" />
           </mat-form-field>
-        
+          <p class="location-note"> * Note:will be reviewed by the admin and displayed upon approval *.</p>
         </div>
           <!-- Google Maps for location selection -->
           <div class="map-container">
             <div id="map" class="map"></div>
           </div>
-  
+        
           <div class="button-group">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-flat-button (click)="submitForm()">Submit</button>
