@@ -74,8 +74,8 @@
               <input matInput required [(ngModel)]="newData.job_role" />
             </mat-form-field>
   
-            <div>
-              <button mat-button matStepperNext>Next</button>
+            <div  class="button-group">
+              <button mat-flat-button matStepperNext>Next</button>
             </div>
           </div>
         </mat-step>
@@ -89,14 +89,14 @@
             </mat-form-field>
   
             <!-- Input field for Walk-In Date -->
-            <mat-form-field appearance="fill">
+           
               <mat-label>Walk-In Date</mat-label>
-              <input matInput type="date" required [(ngModel)]="newData.walkInDate" />
-            </mat-form-field>
+              <input  type="date" required [(ngModel)]="newData.walkInDate" />
+           
           </div>
-          <div>
+          <div  class="button-group">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-flat-button matStepperNext>Next</button>
           </div>
         </mat-step>
   
@@ -121,9 +121,9 @@
             <div id="map" class="map"></div>
           </div>
   
-          <div>
+          <div class="button-group">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="submitForm()">Submit</button>
+            <button mat-flat-button (click)="submitForm()">Submit</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>

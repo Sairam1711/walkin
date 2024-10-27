@@ -126,14 +126,15 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  width: 90%; /* Make popup responsive */
+  width: 60%; /* Make popup responsive */
   max-width: 500px; /* Max width for larger screens */
-  height: auto; /* Adjust height based on content */
+  height: 60%; /* Adjust height based on content */
+  overflow:auto;
 }
 
 .popup-header {
@@ -147,7 +148,10 @@
 }
 
 .popup-content {
-  margin-top: 15px;
+
+  overflow: auto;
+  white-space: pre-line
+
 }
 
 .popup button {
@@ -163,7 +167,9 @@
 .popup button:hover {
   background-color: #0056b3; /* Darken button on hover */
 }
-
+.popup p{
+  text-align: left;
+}
 
   
 .close {
@@ -236,7 +242,7 @@ h1{
   margin: 0;
 }
   .popup {
-    width: 95%; /* Slightly narrower on smaller screens */
+    width: 65%; /* Slightly narrower on smaller screens */
   }
   .card button {
     background-color:#007bff; /* Primary color */
@@ -291,6 +297,7 @@ h1{
   }
   .item-1{
     display: flex;
+    text-align: left;
     justify-content: space-between;
     width: 100%;
  
@@ -322,7 +329,7 @@ h1{
 @media (max-width: 600px) {
 .popup-content,.popup{
 
-  width: 80%;
+  width: 70%;
 
 }
 .card{

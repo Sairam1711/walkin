@@ -21,7 +21,7 @@ export class SupabaseService {
     const start = (page - 1) * limit;
     const end = start + limit - 1;
   
-    let query = this.supabase.from(tableName).select('*', { count: 'exact' }).range(start, end);
+    let query = this.supabase.from(tableName).select('*', { count: 'exact' })    .order('created_at', { ascending: false }).range(start, end);
   
     // Apply filters if they exist
     if (filters.employer_name) {
@@ -45,6 +45,10 @@ export class SupabaseService {
       return { data: [], total: 0 };
     }
     this.cards=data
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     return { data: data || [], total: count || 0 };
   }
   

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-walk-in-card',
   standalone: true,
@@ -18,21 +19,35 @@ import {MatIconModule} from '@angular/material/icon';
 export class WalkInCardComponent implements OnInit {
  // Sample data for wake events
  @Input() cards: any[] = []
- cardsPerPage = 6;
- currentPage = 1;
+ cardsPerPage= 6;
+ currentPage :any = 1;
+ loading:boolean=false
   // Assuming 6 cards per page
  selectedCard: any = null; // To hold the card details for the popup
  limit: number = 6;
  totalRecords: number = 0;
  totalPages :number=0;
- constructor(private supabaseService: SupabaseService) {}
- filter:any
+ constructor(private supabaseService: SupabaseService,private route:ActivatedRoute,private router:Router) {}
+ filter:any={
+  job_role:'',
+  industry:"",
+  employer_name:""
+ }
  ngOnInit() {
-   this.loadData(this.currentPage,{});
+  this.route.params.subscribe((params) => {
+    // Refresh or reload data based on parameter changes
+  this.currentPage=this.route.snapshot.paramMap.get('page')?this.route.snapshot.paramMap.get('page'):1
+ this.filter.job_role=this.route.snapshot.paramMap.get('role')
+ this.filter.industry=this.route.snapshot.paramMap.get('industry')
+ this.filter.employer_name=this.route.snapshot.paramMap.get('key')
+   this.loadData(Number(this.currentPage) ,this.filter);
+  });
+ 
   // this.loadData2()
  }
 
  async loadData(page: number,filter:any): Promise<void> {
+  this.loading=true;
  this.supabaseService.getData("walkindata", page, this.limit, filter)
     .then(result => {
       console.log( result.data);
@@ -40,6 +55,7 @@ export class WalkInCardComponent implements OnInit {
       this.totalRecords = result.total;
       this.totalPages=Math.ceil(this.totalRecords / 6);
       this.cards = this.supabaseService.cards;
+      this.loading=false
     })
     .catch(error => {
       console.error('Error fetching employees:', error);
@@ -66,12 +82,17 @@ applyFilters(): void {
 
 
 // Method to copy the location (mobile number in this case)
-copyLocation(mobile: string) {
-  navigator.clipboard.writeText(mobile).then(() => {
-    alert('Location copied to clipboard: ' + mobile);
-  }).catch(err => {
-    console.error('Could not copy text: ', err);
-  });
+copyLocation(mobile: string,copy:boolean) {
+  if(copy){
+    navigator.clipboard.writeText(mobile).then(() => {
+      alert('Location copied to clipboard: ' + mobile);
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  }else{
+    const newWindow = window.open(mobile,"_blank")
+  }
+
 }
 
 openPopup(card: any) {
@@ -93,15 +114,15 @@ closePopup() {
 nextPage() {
   
     this.currentPage++;
-    this.loadData(this.currentPage,{});
-  
+    // this.loadData(this.currentPage,{});
+    this.router.navigate(['/search', 1]) 
 }
 
 previousPage() {
 
     this.currentPage--;
-    this.loadData(this.currentPage,{});
-  
+    // this.loadData(this.currentPage,{});
+    this.router.navigate(['/search', 1])
 }
 filteredCards = this.cards; // Create a copy of cards for filtering
 
@@ -120,4 +141,19 @@ truncateText(text: string, limit: number): string {
   return ''
 }}
 
+calculateTimeAgo(date: string): string {
+  const now = new Date();
+  const seconds = Math.floor((now.getTime() -new Date( date).getTime()) / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 1) return `${days} days ago`;
+  if (days === 1) return 'Yesterday';
+  if (hours >= 1) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  if (minutes >= 1) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  if (seconds >= 1) return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+
+  return 'Just now';
+}
 }

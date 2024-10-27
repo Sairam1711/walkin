@@ -5,6 +5,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 
 export const routes: Routes = [
     {path:"",component:WalkInCardComponent},
+    {path:"search/:page/:key/:industry/:role",component:WalkInCardComponent},
+    {path:"search/:page",component:WalkInCardComponent},
     {path:"about-us",component:AboutUsComponent}
 
 ];

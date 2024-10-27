@@ -9,6 +9,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {map, startWith} from 'rxjs/operators';
 import { SupabaseService } from '../services/supabase.service';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-filter',
   standalone: true,
@@ -25,7 +26,7 @@ export class FilterComponent {
   contactPerson: string = '';
   filter:any={};
   @Output() filterChange = new EventEmitter<any>();
-  constructor(private supabaseService: SupabaseService) {
+  constructor(private supabaseService: SupabaseService,private router: Router) {
     this.industries=supabaseService.industries
   }
   industryControl = new FormControl();
@@ -88,15 +89,20 @@ filterIndustries() {
     console.log(this.searchTerm);
     this.filter=
     {
-      employer_name:this.searchTerm,
-      job_role:this.jobRole,
-      industry:this.searchTerm2
+      employer_name:this.searchTerm?this.searchTerm:"",
+      job_role:this.jobRole?this.jobRole:"",
+      industry:this.searchTerm2?this.searchTerm2:""
     }
-    this.filterChange. emit( {
-      employer_name:this.searchTerm,
-      job_role:this.jobRole,
-      industry:this.searchTerm2
-    });
-    this.supabaseService.getData("walkindata",1,6,this.filter)
+   
+    // this.filterChange. emit( {
+    //   employer_name:this.searchTerm,
+    //   job_role:this.jobRole,
+    //   industry:this.searchTerm2
+    // });
+  
+ //   this.supabaseService.getData("walkindata",1,6,this.filter)
+ console.log(this.filter);
+    this.router.navigate(['/search', 1,this.filter.employer_name,this.filter.industry,this.filter.job_role])
+  //  this.router.navigate(['/search/1/'+this.filter.employer_name?this.filter.employer_name:""+'/'+this.filter.industry?this.filter.industry:''+'/'+this.filter.searchTerm2?this.filter.searchTerm2:''])
   }
 }

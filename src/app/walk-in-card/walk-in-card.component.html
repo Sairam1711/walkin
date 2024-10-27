@@ -11,7 +11,7 @@
           <h1 class="card-head" matTooltip="{{ card.job_title }}" matTooltipPosition="above">
             {{ truncateText(card.job_title, 40) }}
           </h1>
-          <span>{{ truncateText(card.employer_name, 20) }}</span>
+          <span>{{ truncateText(card.employer_name, 20) }} posted {{ calculateTimeAgo(card.date)}}</span>
         </div>
       <img src="https://res.cloudinary.com/dopyogopf/image/upload/f_auto,q_auto/dax3h0npppkcltdqa8si" alt="Logo" class="card-logo">
      
@@ -30,18 +30,23 @@
       </span>
  
         <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
-        9751813050
+          <mat-icon  *ngIf="card.mobile" aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
+        {{card.mobile}}
+        </span>
+        <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="calendar_today"></mat-icon>
+      {{card.walkInDate
+      }}
         </span>
      </div>
      <div>
-  <span class="text-truncate" matTooltip="{{ card.job_description }}" matTooltipPosition="above">
+  <span class="text-truncate" >
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="description"></mat-icon>
  {{truncateText(card.job_description,100)}}
   </span>
      </div>
      <div class="item-4">
-      <button class="card button" (click)="copyLocation(card.mobile)">Copy Location</button>
+      <button class="card button"  (click)="copyLocation(card.apply_link?card.apply_link:card.walkInLocation,card.apply_link?false:true)">{{card.apply_link?"Apply":"Copy Location"}}</button>
       <button  class="card button" (click)="openPopup(card)" >View More</button>
     </div>
     </div>
@@ -51,7 +56,7 @@
 
     <div class="card"  *ngIf="cards.length===0" >
       
-      <h1>Loading...</h1>
+      <h1>{{loading?"Loading...":"Data not found"}}</h1>
           </div>
     <div class="pagination">
       <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
