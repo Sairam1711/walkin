@@ -25,14 +25,18 @@ export class FilterComponent {
   jobRole: string = '';
   contactPerson: string = '';
   filter:any={};
+  allParams:any
   @Output() filterChange = new EventEmitter<any>();
   constructor(private supabaseService: SupabaseService,private router: Router,private route: ActivatedRoute) {
     this.industries=supabaseService.industries
-    console.log(supabaseService.filtermain);
-    if(supabaseService.filtermain){
-      this.searchTerm=supabaseService.filtermain.employer_name
-      this.searchTerm2=supabaseService.filtermain.industry
-      this.jobRole=supabaseService.filtermain.jobRole
+    this.route.params.subscribe(params => {
+      this.allParams = params;
+      console.log('Route Parameters:', this.allParams);
+    });
+    if(this.allParams){
+      this.searchTerm=this.allParams.key
+      this.searchTerm2=this.allParams.industry
+      this.jobRole=this.allParams.roles
     }
   }
   industryControl = new FormControl();

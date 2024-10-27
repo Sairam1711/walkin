@@ -36,7 +36,7 @@ export class WalkInCardComponent implements OnInit {
  ngOnInit() {
   this.route.params.subscribe((params) => {
     // Refresh or reload data based on parameter changes
-  this.currentPage=this.route.snapshot.paramMap.get('page')?this.route.snapshot.paramMap.get('page'):1
+  this.currentPage=Number( this.route.snapshot.paramMap.get('page')?this.route.snapshot.paramMap.get('page'):1)
  this.filter.job_role=this.route.snapshot.paramMap.get('role')
  this.filter.industry=this.route.snapshot.paramMap.get('industry')
  this.filter.employer_name=this.route.snapshot.paramMap.get('key')

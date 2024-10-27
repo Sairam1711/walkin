@@ -19,11 +19,12 @@ export class SupabaseService {
 
   // Method to fetch data from a specific table
   async getData(tableName: string, page: number, limit: number, filters: any) {
+    const today = new Date().toISOString().split('T')[0];
     this.filtermain=filters;
     const start = (page - 1) * limit;
     const end = start + limit - 1;
   
-    let query = this.supabase.from(tableName).select('*', { count: 'exact' })    .order('created_at', { ascending: false }).range(start, end);
+    let query = this.supabase.from(tableName).select('*', { count: 'exact' }).gte('walkInLocation', today).eq('status', true).order('created_at', { ascending: false }).range(start, end);
   
     // Apply filters if they exist
     if (filters.employer_name) {
