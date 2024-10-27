@@ -107,7 +107,9 @@
   background-color: #ccc; /* Gray background for disabled button */
   cursor: not-allowed; /* Not allowed cursor */
 }
-
+.mdate{
+  display: none;
+}
 .pagination button:hover:not(:disabled) {
   background-color: #0056b3; /* Darken button on hover */
 }
@@ -217,6 +219,16 @@ h1{
 
 
 @media (max-width: 768px) { 
+  #discription{
+  height: 15%;
+  overflow:hidden;
+  }
+  .ddate{
+    display: none;
+  }
+  .mdate{
+    display: block;
+  }
   .card-container {
   flex-direction: row; /* Stack cards vertically on smaller screens */
   align-items: center; /* Center align cards */

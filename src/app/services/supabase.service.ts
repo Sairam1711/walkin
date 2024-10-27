@@ -11,6 +11,7 @@ export class SupabaseService {
   private supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndneW9zbGlxb2l2eW93amxpdWJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjUzMDg5NzksImV4cCI6MjA0MDg4NDk3OX0.f1uzZrTkeJlmGKEDSTBGwDOrGV2jdLhqnZMgMLODc1o';
   private supabase: SupabaseClient;
   cards :any
+  filtermain:any
   constructor(private http: HttpClient) {
     this.supabase = createClient(this.supabaseUrl, this.supabaseKey)
 
@@ -18,6 +19,7 @@ export class SupabaseService {
 
   // Method to fetch data from a specific table
   async getData(tableName: string, page: number, limit: number, filters: any) {
+    this.filtermain=filters;
     const start = (page - 1) * limit;
     const end = start + limit - 1;
   

@@ -11,7 +11,7 @@
           <h1 class="card-head" matTooltip="{{ card.job_title }}" matTooltipPosition="above">
             {{ truncateText(card.job_title, 40) }}
           </h1>
-          <span>{{ truncateText(card.employer_name, 20) }} posted {{ calculateTimeAgo(card.date)}}</span>
+          <span matTooltip="{{ card.employer_name }}" matTooltipPosition="above" >{{ truncateText(card.employer_name, 20) }} posted {{ calculateTimeAgo(card.date)}}</span>
         </div>
       <img src="https://res.cloudinary.com/dopyogopf/image/upload/f_auto,q_auto/dax3h0npppkcltdqa8si" alt="Logo" class="card-logo">
      
@@ -33,14 +33,19 @@
           <mat-icon  *ngIf="card.mobile" aria-hidden="false" aria-label="Example home icon" fontIcon="phone"></mat-icon>
         {{card.mobile}}
         </span>
-        <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
+        <span class="text-truncate" class="ddate" matTooltip="{{ card.walkInDate }}" matTooltipPosition="above">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="calendar_today"></mat-icon>
       {{card.walkInDate
       }}
         </span>
-     </div>
-     <div>
-  <span class="text-truncate" >
+     </div >
+     <span  class="text-truncate" class="mdate" matTooltip="{{ card.walkInDate }}" matTooltipPosition="above">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="calendar_today"></mat-icon>
+  {{card.walkInDate
+  }}
+    </span>
+     <div id="discription">
+  <span class="text-truncate"  >
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="description"></mat-icon>
  {{truncateText(card.job_description,100)}}
   </span>

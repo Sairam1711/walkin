@@ -1,7 +1,7 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {  FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SupabaseService } from '../services/supabase.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   selectedCard: any = null;
   myControl = new FormControl();
 
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(private supabaseService: SupabaseService,private router :Router) {}
   
   filteredOptions: string[] = [];
 
@@ -82,6 +82,7 @@ export class HeaderComponent implements OnInit {
       this.newData.date=new Date
       this.newData.status=false
       this.supabaseService.adddata(this.newData,"walkindata")
+      this.router.navigate(['/search', 1])
     }
 
     console.log('Form Data:', this.newData);

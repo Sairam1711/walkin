@@ -9,7 +9,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {map, startWith} from 'rxjs/operators';
 import { SupabaseService } from '../services/supabase.service';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-filter',
   standalone: true,
@@ -21,13 +21,19 @@ import { Router } from '@angular/router';
 })
 export class FilterComponent {
   searchTerm: string = '';
-  searchTerm2:string="";
+  searchTerm2:any="";
   jobRole: string = '';
   contactPerson: string = '';
   filter:any={};
   @Output() filterChange = new EventEmitter<any>();
-  constructor(private supabaseService: SupabaseService,private router: Router) {
+  constructor(private supabaseService: SupabaseService,private router: Router,private route: ActivatedRoute) {
     this.industries=supabaseService.industries
+    console.log(supabaseService.filtermain);
+    if(supabaseService.filtermain){
+      this.searchTerm=supabaseService.filtermain.employer_name
+      this.searchTerm2=supabaseService.filtermain.industry
+      this.jobRole=supabaseService.filtermain.jobRole
+    }
   }
   industryControl = new FormControl();
   industries: string[] = ['IT', 'Healthcare', 'Finance', 'Education', 'Retail']; // Add your industry list here
