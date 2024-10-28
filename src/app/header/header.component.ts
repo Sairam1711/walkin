@@ -101,7 +101,6 @@ export class HeaderComponent implements OnInit {
       date:'',
       job_description: '',
       walkInLocation: '', // Reset walk-in location
-      job_location:"",
       industry:""
     };
  
