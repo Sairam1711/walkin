@@ -115,14 +115,14 @@ nextPage() {
   
     this.currentPage++;
     // this.loadData(this.currentPage,{});
-    this.router.navigate(['/search', 1]) 
+    this.router.navigate(['/search',this. currentPage]) 
 }
 
 previousPage() {
 
     this.currentPage--;
     // this.loadData(this.currentPage,{});
-    this.router.navigate(['/search', 1])
+    this.router.navigate(['/search',this. currentPage])
 }
 filteredCards = this.cards; // Create a copy of cards for filtering
 
