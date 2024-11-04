@@ -20,13 +20,13 @@
       
       <span class="text-truncate" matTooltip="{{ card.job_city }}" matTooltipPosition="above"> 
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="place "></mat-icon>
-        Hiring office located in {{ card.job_city?card.job_city: card.job_state | slice:0:20 }}
+        Hiring office located in {{ card.job_city?truncateText(card.job_city,15): card.job_state | slice:0:20 }}
       </span>
      </div>
      <div class="item-3">
-      <span class="text-truncate" matTooltip="{{ card.industry }}" matTooltipPosition="above">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="business_center"></mat-icon>
-      {{card.industry}}
+      <span class="text-truncate" id="card-industry" matTooltip="{{ card.industry }}" matTooltipPosition="above">
+        <mat-icon  *ngIf="card.industry" aria-hidden="false" aria-label="Example home icon" fontIcon="business_center"></mat-icon>
+      {{truncateText(card.industry,15)}}
       </span>
  
         <span class="text-truncate" matTooltip="{{ card.mobile }}" matTooltipPosition="above">
