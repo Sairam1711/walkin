@@ -51,8 +51,9 @@
   </span>
      </div>
      <div class="item-4">
-      <button class="card button"  (click)="copyLocation(card.apply_link?card.apply_link:card.walkInLocation,card.apply_link?false:true)">{{card.apply_link?"Apply":"Copy Location"}}</button>
       <button  class="card button" (click)="openPopup(card)" >View More</button>
+      <button class="card button"  (click)="copyLocation(card.apply_link?card.apply_link:card.walkInLocation,card.apply_link?false:true)">{{card.apply_link?"Apply":"Copy Location"}}</button>
+    
     </div>
     </div>
     
